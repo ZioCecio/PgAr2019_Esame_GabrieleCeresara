@@ -10,6 +10,9 @@ public class Deck {
     public static final int NUM_CARDS = 80;
     private ArrayList<Card> deck;
 
+    /**
+     * Costruttore deck solo per il modulo di base
+     */
     public Deck() {
         this.deck = new ArrayList<Card>();
 
