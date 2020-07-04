@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- XML per il mazzo base contenente solo carte di tipo numerico -->
+<mazzo numerodicarte = "104" numerodisottomazzi = "4">
+	<!-- Sotto-mazzo carte di colore blu -->
+	<sottomazzo id = "0" colore="blu" numerodicarte="26">
+		<carta id="0" tipo = "numero" valore = "0"/>
+		<carta id="1" tipo = "numero" valore = "0"/>
+		<carta id="2" tipo = "numero" valore = "1"/>
+		<carta id="3" tipo = "numero" valore = "1"/>
+		<carta id="4" tipo = "numero" valore = "2"/>
+		<carta id="5" tipo = "numero" valore = "2"/>
+		<carta id="6" tipo = "numero" valore = "3"/>
+		<carta id="7" tipo = "numero" valore = "3"/>
+		<carta id="8" tipo = "numero" valore = "4"/>
+		<carta id="9" tipo = "numero" valore = "4"/>
+		<carta id="10" tipo = "numero" valore = "5"/>
+		<carta id="11" tipo = "numero" valore = "5"/>
+		<carta id="12" tipo = "numero" valore = "6"/>
+		<carta id="13" tipo = "numero" valore = "6"/>
+		<carta id="14" tipo = "numero" valore = "7"/>
+		<carta id="15" tipo = "numero" valore = "7"/>
+		<carta id="16" tipo = "numero" valore = "8"/>
+		<carta id="17" tipo = "numero" valore = "8"/>
+		<carta id="18" tipo = "numero" valore = "9"/>
+		<carta id="19" tipo = "numero" valore = "9"/>
+		<carta id="20" tipo = "speciale" valore = "PescaDue"/>
+		<carta id="21" tipo = "speciale" valore = "PescaDue"/>
+		<carta id="22" tipo = "speciale" valore = "Stop"/>
+		<carta id="23" tipo = "speciale" valore = "Stop"/>
+		<carta id="24" tipo = "speciale" valore = "CambioGiro"/>
+		<carta id="25" tipo = "speciale" valore = "CambioGiro"/>
+	</sottomazzo>
+	<!-- Sotto-mazzo carte di colore rosso -->
+	<sottomazzo id = "1" colore="rosso" numerodicarte="26">
+		<carta id="0" tipo = "numero" valore = "0"/>
+		<carta id="1" tipo = "numero" valore = "0"/>
+		<carta id="2" tipo = "numero" valore = "1"/>
+		<carta id="3" tipo = "numero" valore = "1"/>
+		<carta id="4" tipo = "numero" valore = "2"/>
+		<carta id="5" tipo = "numero" valore = "2"/>
+		<carta id="6" tipo = "numero" valore = "3"/>
+		<carta id="7" tipo = "numero" valore = "3"/>
+		<carta id="8" tipo = "numero" valore = "4"/>
+		<carta id="9" tipo = "numero" valore = "4"/>
+		<carta id="10" tipo = "numero" valore = "5"/>
+		<carta id="11" tipo = "numero" valore = "5"/>
+		<carta id="12" tipo = "numero" valore = "6"/>
+		<carta id="13" tipo = "numero" valore = "6"/>
+		<carta id="14" tipo = "numero" valore = "7"/>
+		<carta id="15" tipo = "numero" valore = "7"/>
+		<carta id="16" tipo = "numero" valore = "8"/>
+		<carta id="17" tipo = "numero" valore = "8"/>
+		<carta id="18" tipo = "numero" valore = "9"/>
+		<carta id="19" tipo = "numero" valore = "9"/>
+		<carta id="20" tipo = "speciale" valore = "PescaDue"/>
+		<carta id="21" tipo = "speciale" valore = "PescaDue"/>
+		<carta id="22" tipo = "speciale" valore = "Stop"/>
+		<carta id="23" tipo = "speciale" valore = "Stop"/>
+		<carta id="24" tipo = "speciale" valore = "CambioGiro"/>
+		<carta id="25" tipo = "speciale" valore = "CambioGiro"/>
+	</sottomazzo>
+	<!-- Sotto-mazzo carte di colore giallo -->
+	<sottomazzo id = "2" colore="giallo" numerodicarte="26">
+		<carta id="0" tipo = "numero" valore = "0"/>
+		<carta id="1" tipo = "numero" valore = "0"/>
+		<carta id="2" tipo = "numero" valore = "1"/>
+		<carta id="3" tipo = "numero" valore = "1"/>
+		<carta id="4" tipo = "numero" valore = "2"/>
+		<carta id="5" tipo = "numero" valore = "2"/>
+		<carta id="6" tipo = "numero" valore = "3"/>
+		<carta id="7" tipo = "numero" valore = "3"/>
+		<carta id="8" tipo = "numero" valore = "4"/>
+		<carta id="9" tipo = "numero" valore = "4"/>
+		<carta id="10" tipo = "numero" valore = "5"/>
+		<carta id="11" tipo = "numero" valore = "5"/>
+		<carta id="12" tipo = "numero" valore = "6"/>
+		<carta id="13" tipo = "numero" valore = "6"/>
+		<carta id="14" tipo = "numero" valore = "7"/>
+		<carta id="15" tipo = "numero" valore = "7"/>
+		<carta id="16" tipo = "numero" valore = "8"/>
+		<carta id="17" tipo = "numero" valore = "8"/>
+		<carta id="18" tipo = "numero" valore = "9"/>
+		<carta id="19" tipo = "numero" valore = "9"/>
+		<carta id="20" tipo = "speciale" valore = "PescaDue"/>
+		<carta id="21" tipo = "speciale" valore = "PescaDue"/>
+		<carta id="22" tipo = "speciale" valore = "Stop"/>
+		<carta id="23" tipo = "speciale" valore = "Stop"/>
+		<carta id="24" tipo = "speciale" valore = "CambioGiro"/>
+		<carta id="25" tipo = "speciale" valore = "CambioGiro"/>
+
+	</sottomazzo>
+	<!-- Sotto-mazzo carte di colore verde -->
+	<sottomazzo id = "3" colore="verde" numerodicarte="26">
+		<carta id="0" tipo = "numero" valore = "0"/>
+		<carta id="1" tipo = "numero" valore = "0"/>
+		<carta id="2" tipo = "numero" valore = "1"/>
+		<carta id="3" tipo = "numero" valore = "1"/>
+		<carta id="4" tipo = "numero" valore = "2"/>
+		<carta id="5" tipo = "numero" valore = "2"/>
+		<carta id="6" tipo = "numero" valore = "3"/>
+		<carta id="7" tipo = "numero" valore = "3"/>
+		<carta id="8" tipo = "numero" valore = "4"/>
+		<carta id="9" tipo = "numero" valore = "4"/>
+		<carta id="10" tipo = "numero" valore = "5"/>
+		<carta id="11" tipo = "numero" valore = "5"/>
+		<carta id="12" tipo = "numero" valore = "6"/>
+		<carta id="13" tipo = "numero" valore = "6"/>
+		<carta id="14" tipo = "numero" valore = "7"/>
+		<carta id="15" tipo = "numero" valore = "7"/>
+		<carta id="16" tipo = "numero" valore = "8"/>
+		<carta id="17" tipo = "numero" valore = "8"/>
+		<carta id="18" tipo = "numero" valore = "9"/>
+		<carta id="19" tipo = "numero" valore = "9"/>
+		<carta id="20" tipo = "speciale" valore = "PescaDue"/>
+		<carta id="21" tipo = "speciale" valore = "PescaDue"/>
+		<carta id="22" tipo = "speciale" valore = "Stop"/>
+		<carta id="23" tipo = "speciale" valore = "Stop"/>
+		<carta id="24" tipo = "speciale" valore = "CambioGiro"/>
+		<carta id="25" tipo = "speciale" valore = "CambioGiro"/>
+	</sottomazzo>
+</mazzo>
