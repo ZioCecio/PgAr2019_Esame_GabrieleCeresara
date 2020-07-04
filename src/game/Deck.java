@@ -1,22 +1,17 @@
 package game;
 
 import java.util.Collections;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  * Classe per gestire il mazzo di gioco
  */
 public class Deck {
     public static final int NUM_CARDS = 80;
-
-    /**
-     * Viene usata una LinkedList per rendere più efficienti le operazioni di
-     * mescolamento
-     */
-    private LinkedList<Card> deck;
+    private ArrayList<Card> deck;
 
     public Deck() {
-        this.deck = new LinkedList<Card>();
+        this.deck = new ArrayList<Card>();
 
         for (int i = 0; i < NUM_CARDS; i++) {
             this.deck.add(new Card(i % 10, Color.values()[i / 20]));
@@ -32,8 +27,8 @@ public class Deck {
      * 
      * @param cards
      */
-    public Deck(LinkedList<Card> cards) {
-        this.deck = new LinkedList<Card>(cards);
+    public Deck(ArrayList<Card> cards) {
+        this.deck = new ArrayList<Card>(cards);
 
         this.shuffle();
     }
@@ -55,12 +50,62 @@ public class Deck {
     }
 
     /**
+     * Ritorna il numero di carte presenti nel mazzo
+     * 
+     * @return
+     */
+    public int remainingCards() {
+        return this.deck.size();
+    }
+
+    /**
      * Operazione di "pescaggio"
      * 
      * @return la carta in cima al mazzo
      */
     public Card getFirstCard() {
-        return this.deck.removeFirst();
+        return this.deck.remove(0);
+    }
+
+    /**
+     * Pesca le prime N carte
+     * 
+     * @param howMuch quante carte pescare
+     * @return
+     */
+    public ArrayList<Card> getFirstCards(int howMuch) {
+        ArrayList<Card> cards = new ArrayList<Card>();
+
+        for (int i = 0; i < howMuch; i++) {
+            cards.add(this.deck.remove(0));
+        }
+
+        return cards;
+    }
+
+    /**
+     * Rimuove dal mazzo la carta specificata
+     */
+    public void removeCard(Card card) {
+        this.deck.remove(card);
+    }
+
+    /**
+     * Aggiunge una nuova carta al mazzo
+     * 
+     * @param card
+     */
+    public void addCard(Card card) {
+        this.deck.add(card);
+    }
+
+    /**
+     * Aggiunge N carte al mazzo
+     * 
+     * @param cards
+     */
+    public void addCards(ArrayList<Card> cards) {
+        this.deck.addAll(cards);
     }
 
     @Override
@@ -71,6 +116,10 @@ public class Deck {
             deck += card.toString() + "\n";
         }
 
+        return deck;
+    }
+
+    public ArrayList<Card> getDeck() {
         return deck;
     }
 }

@@ -9,8 +9,8 @@ package it.unibs.fp.mylib;
 
 public class MyMenu {
 
-	final private static String VOCE_USCITA = "0\tExit";
-	final private static String RICHIESTA_INSERIMENTO = "Enter the number of the required option: ";
+	final private static String VOCE_USCITA = "0\tEsci";
+	final private static String RICHIESTA_INSERIMENTO = "Inserisci il numero dell'opzione richiesta: ";
 
 	private String titolo;
 	private String[] voci;
@@ -36,10 +36,12 @@ public class MyMenu {
 		stampaMenuConX();
 		return InputDati.leggiIntero(RICHIESTA_INSERIMENTO, 0, voci.length);
 	}
+
 	public int scegliSenzaUscita() {
 		stampaMenuSenzaUscita();
-		return InputDati.leggiIntero(RICHIESTA_INSERIMENTO, 0, voci.length);
+		return InputDati.leggiIntero(RICHIESTA_INSERIMENTO, 1, voci.length);
 	}
+
 	public void stampaMenu() {
 		System.out.println(stampaCornice());
 		System.out.println(titolo);
@@ -57,8 +59,8 @@ public class MyMenu {
 		System.out.println(titolo);
 		System.out.println(stampaCornice());
 		for (int i = 0; i < voci.length; i++) {
-			System.out.print((i + 1) + "\t" + voci[i] +" ");
-			for(int j=0;j<numeroDiX;j++) {
+			System.out.print((i + 1) + "\t" + voci[i] + " ");
+			for (int j = 0; j < numeroDiX; j++) {
 				System.out.print("X");
 			}
 			System.out.println(" ");
@@ -67,6 +69,7 @@ public class MyMenu {
 		System.out.println(VOCE_USCITA);
 		System.out.println();
 	}
+
 	public void stampaMenuSenzaUscita() {
 		System.out.println(stampaCornice());
 		System.out.println(titolo);
@@ -74,8 +77,9 @@ public class MyMenu {
 		for (int i = 0; i < voci.length; i++) {
 			System.out.println((i + 1) + "\t" + voci[i]);
 		}
-	
+
 	}
+
 	private String stampaCornice() {
 		StringBuilder c = new StringBuilder();
 		for (int i = 0; i <= titolo.length(); i++) {

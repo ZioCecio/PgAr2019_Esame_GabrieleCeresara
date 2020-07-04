@@ -6,12 +6,14 @@ import java.util.ArrayList;
  * Classe per rappresentare le informazioni relative ad ogni giocatore
  */
 public class Player {
-    private String name;
-    private ArrayList<Card> currentDeck;
+    public static final int NUM_OF_INITIAL_CARDS = 7;
 
-    public Player(String name, ArrayList<Card> currentDeck) {
+    private String name;
+    private PlayerDeck currentDeck;
+
+    public Player(String name) {
         this.name = name;
-        this.currentDeck = currentDeck;
+        this.currentDeck = new PlayerDeck();
     }
 
     /**
@@ -20,29 +22,37 @@ public class Player {
      * @param card
      */
     public void addCard(Card card) {
-        this.currentDeck.add(card);
+        this.currentDeck.addCard(card);
     }
 
     /**
-     * Trova tutte le carte "giocabili" in base alla carta specificata, che sarà
-     * quella in cima al mazzo degli scarti
+     * Aggiunge N carte al mazzo del giocatore
+     * 
+     * @param cards
+     */
+    public void addCards(ArrayList<Card> cards) {
+        this.currentDeck.addCards(cards);
+    }
+
+    /**
+     * Rimuove dal mazzo la carta specificata
      * 
      * @param card
-     * @return la lista di carte giocabili
      */
-    public ArrayList<Card> findRightCards(Card card) {
-        ArrayList<Card> cards = new ArrayList<Card>();
-
-        for (Card c : this.currentDeck) {
-            if (c.getColor() == card.getColor() || c.getValue() == card.getValue()) {
-                cards.add(c);
-            }
-        }
-
-        return cards;
+    public void removeCard(Card card) {
+        this.currentDeck.removeCard(card);
     }
 
     public String getName() {
         return name;
+    }
+
+    public PlayerDeck getCurrentDeck() {
+        return currentDeck;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s possiede le seguenti carte:\n%s", this.name, this.currentDeck.toString());
     }
 }

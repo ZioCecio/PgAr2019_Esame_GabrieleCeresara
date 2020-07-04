@@ -20,6 +20,10 @@ public class Card {
         return color;
     }
 
+    public boolean isCompatible(Card card) {
+        return (this.color == card.color || this.value == card.value);
+    }
+
     @Override
     public String toString() {
         return String.format("%d %s", this.value, this.color.name());
