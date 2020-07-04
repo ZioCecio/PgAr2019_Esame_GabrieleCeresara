@@ -281,4 +281,14 @@ public class Match {
     public Date getDateOfMatch() {
         return dateOfMatch;
     }
+
+    public Player getWinner() {
+        for (Player player : this.players) {
+            if (player.getCurrentDeck().remainingCards() == 0) {
+                return player;
+            }
+        }
+
+        return null;
+    }
 }

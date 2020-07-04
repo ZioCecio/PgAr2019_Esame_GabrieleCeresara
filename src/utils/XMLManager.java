@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
@@ -22,6 +24,11 @@ import game.Match;
 import game.Player;
 
 public class XMLManager {
+    private static HashMap<String, Integer> victoryRanking;
+    private HashMap<String, Integer> averageCardRanking;
+
+    private static ArrayList<PlayerModel> playerModels;
+
     /**
      * Legge e crea un nuovo mazzo di carte a partire dal file XML specificato come
      * parametro
@@ -160,7 +167,136 @@ public class XMLManager {
         }
     }
 
-    public static void writeRanking() {
+    public static void showStats(String filePath) {
+        XMLInputFactory xmlif = null;
+        XMLStreamReader xmlr = null;
 
+        try {
+            xmlif = XMLInputFactory.newInstance();
+            xmlr = xmlif.createXMLStreamReader(filePath, new FileInputStream(filePath));
+
+            while (xmlr.hasNext()) {
+                if (xmlr.getEventType() == XMLStreamConstants.START_ELEMENT
+                        && xmlr.getLocalName().equals("classifica_partita")) {
+
+                    int numOfPlayers = Integer.parseInt(xmlr.getAttributeValue(1));
+                    String date = xmlr.getAttributeValue(0);
+
+                    System.out.println(
+                            String.format("Partita disputata il giorno %s da %d giocatori: ", date, numOfPlayers));
+
+                    for (int i = 0; i < numOfPlayers; i++) {
+                        xmlr.nextTag();
+
+                        String name = xmlr.getAttributeValue(1);
+                        int cards = Integer.parseInt(xmlr.getAttributeValue(2));
+
+                        System.out.println(String.format("%d) %s con %d carte", i + 1, name, cards));
+
+                        xmlr.nextTag();
+                    }
+                }
+
+                xmlr.next();
+            }
+
+            xmlr.close();
+
+        } catch (FileNotFoundException | XMLStreamException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeRanking(Match match) {
+        readRankings();
+
+        Collections.sort(match.getPlayers());
+
+        for (Player player : match.getPlayers()) {
+            PlayerModel pastData = playerModels.stream().filter(p -> p.getName().equals(player.getName())).findAny()
+                    .orElse(null);
+
+            if (pastData == null) {
+                playerModels
+                        .add(new PlayerModel(player.getName(), player.getCurrentDeck().remainingCards() == 0 ? 1 : 0,
+                                player.getCurrentDeck().remainingCards(), 1));
+            } else {
+                pastData.increment(player.getCurrentDeck().remainingCards() == 0 ? 1 : 0,
+                        player.getCurrentDeck().remainingCards());
+            }
+        }
+
+        XMLOutputFactory xmlof = null;
+        XMLStreamWriter xmlw = null;
+
+        try {
+            xmlof = XMLOutputFactory.newInstance();
+            xmlw = xmlof.createXMLStreamWriter(new FileOutputStream("./stats/playerStats.xml"), "utf-8");
+
+            xmlw.writeStartDocument("utf-8", "1.0");
+            xmlw.writeStartElement("giocatori");
+            xmlw.writeAttribute("numero", String.format("%d", playerModels.size()));
+
+            for (PlayerModel pm : playerModels) {
+                xmlw.writeStartElement("giocatore");
+
+                xmlw.writeAttribute("nome", pm.getName());
+                xmlw.writeAttribute("numero_vittorie", String.format("%d", pm.getNumberOfVictory()));
+                xmlw.writeAttribute("carte_totali", String.format("%d", pm.getTotalCards()));
+                xmlw.writeAttribute("partite_totali", String.format("%d", pm.getTotalMatches()));
+
+                xmlw.writeEndElement();
+            }
+
+            xmlw.writeEndElement();
+            xmlw.writeEndDocument();
+
+            xmlw.flush();
+            xmlw.close();
+
+        } catch (FileNotFoundException | XMLStreamException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void readRankings() {
+        playerModels = new ArrayList<PlayerModel>();
+
+        XMLInputFactory xmlif = null;
+        XMLStreamReader xmlr = null;
+
+        xmlif = XMLInputFactory.newInstance();
+
+        try {
+            xmlr = xmlif.createXMLStreamReader("./stats/playerStats.xml",
+                    new FileInputStream("./stats/playerStats.xml"));
+
+            while (xmlr.hasNext()) {
+                if (xmlr.getEventType() == XMLStreamConstants.START_ELEMENT
+                        && xmlr.getLocalName().equals("giocatori")) {
+                    int numOfPlayers = Integer.parseInt(xmlr.getAttributeValue(0));
+
+                    for (int i = 0; i < numOfPlayers; i++) {
+                        xmlr.nextTag();
+
+                        String name = xmlr.getAttributeValue(0);
+                        int numberOfVictory = Integer.parseInt(xmlr.getAttributeValue(1));
+                        int totalCards = Integer.parseInt(xmlr.getAttributeValue(2));
+                        int totalMatches = Integer.parseInt(xmlr.getAttributeValue(3));
+
+                        playerModels.add(new PlayerModel(name, numberOfVictory, totalCards, totalMatches));
+
+                        xmlr.nextTag();
+                    }
+                }
+
+                xmlr.next();
+            }
+
+            xmlr.close();
+
+        } catch (FileNotFoundException | XMLStreamException e) {
+            e.printStackTrace();
+        }
     }
 }
