@@ -13,6 +13,7 @@ public class Card {
             this.value = value;
             this.color = color;
         } else if (type == CardType.PESCA_DUE || type == CardType.STOP || type == CardType.CAMBIO_GIRO) {
+            // Anche le carte speciali hanno un loro valore
             this.value = -1 * (type.ordinal() + 2);
             this.color = color;
         } else {
@@ -39,8 +40,16 @@ public class Card {
         this.color = color;
     }
 
+    /**
+     * Controlla se la carta specificata è compatibile con quella che richiama il
+     * metodo (ovvero se è possibile giocare la carte specificata se l'ultima carta
+     * scartata è questa)
+     * 
+     * @param card
+     * @return
+     */
     public boolean isCompatible(Card card) {
-        if (card.type.isAlwaysCompatible()) {
+        if (this.type.isAlwaysCompatible()) {
             return true;
         }
 

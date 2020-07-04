@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Classe per rappresentare le informazioni relative ad ogni giocatore
  */
-public class Player {
+public class Player implements Comparable<Player> {
     public static final int NUM_OF_INITIAL_CARDS = 7;
 
     private String name;
@@ -51,8 +51,17 @@ public class Player {
         return currentDeck;
     }
 
+    public void setCurrentDeck(PlayerDeck currentDeck) {
+        this.currentDeck = currentDeck;
+    }
+
     @Override
     public String toString() {
         return String.format("%s possiede le seguenti carte:\n%s", this.name, this.currentDeck.toString());
+    }
+
+    @Override
+    public int compareTo(Player player) {
+        return this.currentDeck.remainingCards() - player.currentDeck.remainingCards();
     }
 }
