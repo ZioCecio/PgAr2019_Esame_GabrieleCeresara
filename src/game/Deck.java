@@ -14,7 +14,7 @@ public class Deck {
         this.deck = new ArrayList<Card>();
 
         for (int i = 0; i < NUM_CARDS; i++) {
-            this.deck.add(new Card(i % 10, Color.values()[i / 20]));
+            this.deck.add(new Card(i % 10, Color.values()[i / 20], CardType.NUMERO));
         }
 
         this.shuffle();

@@ -3,6 +3,7 @@ package utils;
 import java.util.ArrayList;
 
 import game.Card;
+import game.Color;
 import game.Deck;
 import game.Match;
 import game.Player;
@@ -54,6 +55,15 @@ public class Manager {
         int choose = menu.scegliSenzaUscita();
 
         return cards.get(choose - 1);
+    }
+
+    public static Color chooseColor() {
+        MyMenu menu = new MyMenu("Seleziona il prossimo colore da giocare: ",
+                new String[] { "BLU", "ROSSO", "VERDE", "GIALLO" });
+
+        int choose = menu.scegliSenzaUscita();
+
+        return Color.values()[choose - 1];
     }
 
     public static void writeTurnInfo(Player player, Card currentCard) {

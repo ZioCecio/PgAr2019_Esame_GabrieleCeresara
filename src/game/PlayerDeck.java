@@ -18,7 +18,7 @@ public class PlayerDeck extends Deck {
         ArrayList<Card> cards = new ArrayList<Card>();
 
         for (Card c : this.getDeck()) {
-            if (c.getColor() == card.getColor() || c.getValue() == card.getValue()) {
+            if (c.isCompatible(card)) {
                 cards.add(c);
             }
         }
