@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 
 import javax.xml.stream.XMLInputFactory;
@@ -24,9 +23,6 @@ import game.Match;
 import game.Player;
 
 public class XMLManager {
-    private static HashMap<String, Integer> victoryRanking;
-    private HashMap<String, Integer> averageCardRanking;
-
     private static ArrayList<PlayerModel> playerModels;
 
     /**
@@ -124,6 +120,11 @@ public class XMLManager {
         return null;
     }
 
+    /**
+     * Scrive le statistiche di un match
+     * 
+     * @param match
+     */
     public static void writeStats(Match match) {
         XMLOutputFactory xmlof = null;
         XMLStreamWriter xmlw = null;
@@ -133,7 +134,7 @@ public class XMLManager {
         try {
             xmlof = XMLOutputFactory.newInstance();
             xmlw = xmlof.createXMLStreamWriter(
-                    new FileOutputStream(String.format("%s/match%d.xml", file.getName(), file.listFiles().length)),
+                    new FileOutputStream(String.format("%s/match%d.xml", file.getName(), file.listFiles().length + 1)),
                     "utf-8");
 
             ArrayList<Player> players = match.getPlayers();
@@ -167,6 +168,11 @@ public class XMLManager {
         }
     }
 
+    /**
+     * Mostra le statistiche di una partita specificata come parametro
+     * 
+     * @param filePath
+     */
     public static void showStats(String filePath) {
         XMLInputFactory xmlif = null;
         XMLStreamReader xmlr = null;
@@ -207,6 +213,12 @@ public class XMLManager {
         }
     }
 
+    /**
+     * Scrive le informazioni riguardati ogni partita di ogni giocatore, aggiornando
+     * o aggiungendo eventuali dati
+     * 
+     * @param match
+     */
     public static void writeRanking(Match match) {
         readRankings();
 
@@ -259,7 +271,10 @@ public class XMLManager {
         }
     }
 
-    public static void readRankings() {
+    /**
+     * Legge dal file tutte le statistiche di tutti i giocatori
+     */
+    private static void readRankings() {
         playerModels = new ArrayList<PlayerModel>();
 
         XMLInputFactory xmlif = null;
@@ -298,5 +313,18 @@ public class XMLManager {
         } catch (FileNotFoundException | XMLStreamException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Ritorna le statistiche lette dal file
+     * 
+     * @return
+     */
+    public static ArrayList<PlayerModel> getRanking() {
+        if (playerModels == null) {
+            readRankings();
+        }
+
+        return playerModels;
     }
 }

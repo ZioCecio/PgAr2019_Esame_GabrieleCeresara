@@ -4,7 +4,7 @@ package utils;
  * Classe usata per rappresentare il formato in cui vengono salvate le
  * informazioni sul file XML
  */
-public class PlayerModel {
+public class PlayerModel implements Comparable<PlayerModel> {
     private String name;
     private int numberOfVictory;
     private int totalCards;
@@ -39,7 +39,12 @@ public class PlayerModel {
 
     public void increment(int victory, int cards) {
         this.numberOfVictory += victory;
-        this.totalCards += totalCards;
+        this.totalCards += cards;
         this.totalMatches++;
+    }
+
+    @Override
+    public int compareTo(PlayerModel pm) {
+        return pm.numberOfVictory - this.numberOfVictory;
     }
 }

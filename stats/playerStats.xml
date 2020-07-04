@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<giocatori numero="6">
-    <giocatore nome="aaa" numero_vittorie="1" carte_totali="0" partite_totali="4"></giocatore>
-    <giocatore nome="bbb" numero_vittorie="1" carte_totali="2" partite_totali="2"></giocatore>
-    <giocatore nome="ccc" numero_vittorie="1" carte_totali="0" partite_totali="1"></giocatore>
-    <giocatore nome="vvv" numero_vittorie="0" carte_totali="5" partite_totali="1"></giocatore>
-    <giocatore nome="ttt" numero_vittorie="1" carte_totali="0" partite_totali="1"></giocatore>
-    <giocatore nome="rrr" numero_vittorie="0" carte_totali="1" partite_totali="1"></giocatore>
+<giocatori numero="4">
+    <giocatore nome="aaa" numero_vittorie="1" carte_totali="7" partite_totali="2"></giocatore>
+    <giocatore nome="bbb" numero_vittorie="0" carte_totali="5" partite_totali="2"></giocatore>
+    <giocatore nome="ddd" numero_vittorie="1" carte_totali="0" partite_totali="1"></giocatore>
+    <giocatore nome="ccc" numero_vittorie="0" carte_totali="3" partite_totali="1"></giocatore>
 </giocatori>

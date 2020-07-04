@@ -1,6 +1,7 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 import game.Card;
 import game.Color;
@@ -8,6 +9,7 @@ import game.Deck;
 import game.Match;
 import it.unibs.fp.mylib.MyMenu;
 import utils.Manager;
+import utils.PlayerModel;
 import utils.XMLManager;
 
 public class Main {
@@ -17,7 +19,8 @@ public class Main {
 
     private static void startProgram() {
         MyMenu menu = new MyMenu("Benvenuto in UnoGiOh! Cosa vuoi fare?",
-                new String[] { "Iniziare una nuova partita", "Visualizzare statistiche di una partita" });
+                new String[] { "Iniziare una nuova partita", "Visualizzare statistiche di una partita",
+                        "Visualizzare la classifica dei giocatori con più vittorie" });
 
         int choose;
 
@@ -31,6 +34,10 @@ public class Main {
 
                 case 2:
                     visualizeStats();
+                    break;
+
+                case 3:
+                    visualizeRanking();
                     break;
             }
         } while (choose != 0);
@@ -63,5 +70,16 @@ public class Main {
         int choose = menu.scegliSenzaUscita();
 
         XMLManager.showStats(file.listFiles()[choose - 1].getPath());
+    }
+
+    private static void visualizeRanking() {
+        ArrayList<PlayerModel> playersInfo = XMLManager.getRanking();
+
+        Collections.sort(playersInfo);
+
+        for (int i = 0; i < playersInfo.size(); i++) {
+            System.out.println(String.format("%d) %s => %d vittorie", i + 1, playersInfo.get(i).getName(),
+                    playersInfo.get(i).getNumberOfVictory()));
+        }
     }
 }
