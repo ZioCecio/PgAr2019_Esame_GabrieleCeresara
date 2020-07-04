@@ -1,14 +1,9 @@
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
-import game.Card;
-import game.Color;
-import game.Deck;
 import game.Match;
 import it.unibs.fp.mylib.MyMenu;
-import utils.Manager;
 import utils.PlayerModel;
 import utils.XMLManager;
 
@@ -44,6 +39,9 @@ public class Main {
 
     }
 
+    /**
+     * Inizia una nuova partita
+     */
     private static void playMatch() {
         Match m = new Match();
 
@@ -57,6 +55,9 @@ public class Main {
         XMLManager.writeRanking(m);
     }
 
+    /**
+     * Visualizza le informazioni di una determinata partita
+     */
     private static void visualizeStats() {
         File file = new File("./stats");
         String[] fileNames = new String[file.listFiles().length - 1];
@@ -72,6 +73,10 @@ public class Main {
         XMLManager.showStats(file.listFiles()[choose - 1].getPath());
     }
 
+    /**
+     * Visualizza la classifica totale Non ho avuto tempo per fare la classifica
+     * carte/partite :( :(
+     */
     private static void visualizeRanking() {
         ArrayList<PlayerModel> playersInfo = XMLManager.getRanking();
 
