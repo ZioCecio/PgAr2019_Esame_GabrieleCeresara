@@ -8,3 +8,7 @@
 
 * Modulo B1 (Carte speciali implementate)
 * Modulo B2 (Parzialmente svolto: le informazioni vengono salvate, ma viene visualizzata solo la classifica delle vittorie)
+
+
+### Librerie esterne:
+* InputDati e MyMenu del professor Serina (caricate qui su GitHub)
